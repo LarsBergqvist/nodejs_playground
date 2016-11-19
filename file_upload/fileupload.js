@@ -2,7 +2,7 @@
 // Start the server with node fileupload.js
 // Then, upload a large file to the server with e.g. curl:
 // curl --upload-file largefiletoupload http://localhost:8100
-// The file should be uploaded in chunks and the response should be
+// The file should be uploaded in chunks and the progress should be
 // reported back to the client
 //
 var http = require('http');
