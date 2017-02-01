@@ -1,8 +1,8 @@
-// use with babel-node server.js
+'use strict'
+const express = require('express'),
+      app = express();
 
-from express import 'express';
+app.use(express.static('public'));
 
-let app = express();
-
-app.get('/', (req,res) => res.send('Hello from Express!'));
+//app.get('/', (req,res) => res.send('Hello from Express!'));
 app.listen(4000);
