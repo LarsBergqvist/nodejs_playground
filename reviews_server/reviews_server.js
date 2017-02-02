@@ -1,6 +1,6 @@
-var express = require('express');
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
@@ -81,8 +81,13 @@ const root = {
     if (!fakeDatabase[id]) {
       throw new Error('no Review exists with id ' + id);
     }
-    fakeDatabase[id] = input;
-    return new Review(id, input);
+    let review = fakeDatabase[id];
+    review.title = input.title || review.title;
+    review.rating = input.rating || review.rating;
+    review.content = input.content || review.content;
+    review.author = input.author || review.author;
+    fakeDatabase[id] = review;
+    return review;
   },
 }
 
