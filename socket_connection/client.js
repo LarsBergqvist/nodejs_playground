@@ -12,7 +12,6 @@ client.on('close', function() {
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
-var util = require('util');
 
 process.stdin.on('data', function (text) {
     client.write(text)
