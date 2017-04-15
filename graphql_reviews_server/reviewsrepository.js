@@ -5,6 +5,7 @@ module.exports = class ReviewsRepository
 {
     constructor() {
         this.db = {}
+        this.nextId=1;
 
         this.createNewReview({title:"A new hope", content:"Great film!",author:"Arne",rating:4});
         this.createNewReview({title:"The Empire Strikes Back", content:"Even better than IV",author:"Bertil",rating:5});
@@ -35,9 +36,9 @@ module.exports = class ReviewsRepository
         this.db[id] = review;
         return review;
     }
-
+    
     createNewReview({title, content, author, rating}) {
-        let id = require('crypto').randomBytes(10).toString('hex');
+        let id = this.nextId++;
         let review = new Review(id,{title:title,content:content,author:author,rating:rating});
         this.db[id] = review;
         return review;
